@@ -2,19 +2,31 @@ import React from 'react';
 import {List, Datagrid, TextField, ReferenceField,
      EditButton,Edit, SimpleForm,DisabledInput,
       SelectInput,ReferenceInput,TextInput,
-      LongTextInput,Create, Filter } from 'react-admin';
+      LongTextInput,Create, Filter,SimpleList,Responsive } from 'react-admin';
 
 export const PostList = props => (
     <List {...props} filters={<PostFilter/>}>
-        <Datagrid >
-            <TextField source="id"/>
-            <ReferenceField source="userId" reference="users">
-                <TextField source="name"/>
-            </ReferenceField>
-            
-            <TextField source="title"/>
-            <EditButton/>
+        <Responsive
+            small={
+                <SimpleList
+                    primaryText={record=>record.title}
+                    secondaryText={record=> `${record.views} views`}
+                    tertiaryText={record=> new Date(record.published_at).toLocaleDateString()}/>
+            }
+            medium={
+                <Datagrid >
+                    <TextField source="id"/>
+                    <ReferenceField source="userId" reference="users">
+                        <TextField source="name"/>
+                    </ReferenceField>
+                    
+                    <TextField source="title"/>
+                    <TextField source="body"/>
+                    <EditButton/>
         </Datagrid>
+            }
+        />
+        
     </List>
 );
 
