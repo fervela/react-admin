@@ -17,7 +17,9 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Im using react !!! its amazing 
+            Also i think git is tracking my every move xD
+            Lets see now 
           </a>
         </header>
       </div>
